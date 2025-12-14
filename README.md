@@ -71,3 +71,6 @@
 ## 외부 API
 - **Geocoding**: Nominatim (OpenStreetMap)
 - **Weather**: Open-Meteo
+
+## 호출 예시
+-  curl "http://localhost:8080/api/weather?city=Seoul"
