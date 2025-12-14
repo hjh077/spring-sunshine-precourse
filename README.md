@@ -45,9 +45,9 @@
 - [x] WeatherResponse.java - 클라이언트 응답 DTO
 
 ### Step 4: Service 계층 구현
-- [ ] GeocodingApiClient.java - Nominatim API 호출
-- [ ] WeatherApiClient.java - Open-Meteo API 호출
-- [ ] WeatherService.java - 비즈니스 로직
+- [x] GeocodingApiClient.java - Nominatim API 호출
+- [x] WeatherApiClient.java - Open-Meteo API 호출
+- [x] WeatherService.java - 비즈니스 로직
 
 ### Step 5: Controller 구현
 - [ ] WeatherController.java - REST API 엔드포인트
