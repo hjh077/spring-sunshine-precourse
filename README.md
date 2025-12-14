@@ -37,7 +37,7 @@
 - [x] exception 패키지 생성
 
 ### Step 2: 도메인 모델 구현
-- [ ] WeatherCode.java - WMO 날씨 코드 enum
+- [x] WeatherCode.java - WMO 날씨 코드 enum
 
 ### Step 3: DTO 구현
 - [ ] GeocodingApiResponse.java - Nominatim API 응답 매핑
