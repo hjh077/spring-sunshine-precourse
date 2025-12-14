@@ -50,7 +50,7 @@
 - [x] WeatherService.java - 비즈니스 로직
 
 ### Step 5: Controller 구현
-- [ ] WeatherController.java - REST API 엔드포인트
+- [x] WeatherController.java - REST API 엔드포인트
 
 ### Step 6: 예외 처리
 - [ ] CityNotFoundException.java
