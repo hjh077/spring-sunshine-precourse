@@ -57,8 +57,8 @@
 - [x] GlobalExceptionHandler.java
 
 ### Step 7: 테스트 코드 작성
-- [ ] WeatherServiceTest.java
-- [ ] WeatherControllerTest.java
+- [x] WeatherServiceTest.java
+- [x] WeatherControllerTest.java
 
 ---
 
