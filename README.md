@@ -53,8 +53,8 @@
 - [x] WeatherController.java - REST API 엔드포인트
 
 ### Step 6: 예외 처리
-- [ ] CityNotFoundException.java
-- [ ] GlobalExceptionHandler.java
+- [x] CityNotFoundException.java
+- [x] GlobalExceptionHandler.java
 
 ### Step 7: 테스트 코드 작성
 - [ ] WeatherServiceTest.java
