@@ -40,9 +40,9 @@
 - [x] WeatherCode.java - WMO 날씨 코드 enum
 
 ### Step 3: DTO 구현
-- [ ] GeocodingApiResponse.java - Nominatim API 응답 매핑
-- [ ] WeatherApiResponse.java - Open-Meteo API 응답 매핑
-- [ ] WeatherResponse.java - 클라이언트 응답 DTO
+- [x] GeocodingApiResponse.java - Nominatim API 응답 매핑
+- [x] WeatherApiResponse.java - Open-Meteo API 응답 매핑
+- [x] WeatherResponse.java - 클라이언트 응답 DTO
 
 ### Step 4: Service 계층 구현
 - [ ] GeocodingApiClient.java - Nominatim API 호출
