@@ -28,12 +28,12 @@ class WeatherControllerTest {
     @DisplayName("도시명으로 날씨를 조회하면 200 OK와 날씨 정보를 반환한다")
     void getWeather_success() throws Exception {
         // given
-        String cityName = "Seoul";
-        WeatherResponse response = createWeatherResponse(cityName);
-        when(weatherService.getWeather(cityName)).thenReturn(response);
+        String locationName = "Seoul";
+        WeatherResponse response = createWeatherResponse(locationName);
+        when(weatherService.getWeather(locationName, false)).thenReturn(response);
 
         // when & then
-        mockMvc.perform(get("/api/weather").param("city", cityName))
+        mockMvc.perform(get("/api/weather").param("city", locationName))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.city").value("Seoul"))
             .andExpect(jsonPath("$.temperature").value(3.4))
@@ -47,20 +47,20 @@ class WeatherControllerTest {
     @DisplayName("존재하지 않는 도시를 조회하면 404 Not Found를 반환한다")
     void getWeather_notFound() throws Exception {
         // given
-        String cityName = "UnknownCity";
-        when(weatherService.getWeather(cityName))
-            .thenThrow(new CityNotFoundException(cityName));
+        String locationName = "UnknownCity";
+        when(weatherService.getWeather(locationName, false))
+            .thenThrow(new CityNotFoundException(locationName));
 
         // when & then
-        mockMvc.perform(get("/api/weather").param("city", cityName))
+        mockMvc.perform(get("/api/weather").param("city", locationName))
             .andExpect(status().isNotFound())
             .andExpect(jsonPath("$.error").value("CITY_NOT_FOUND"))
             .andExpect(jsonPath("$.city").value("UnknownCity"));
     }
 
-    private WeatherResponse createWeatherResponse(String cityName) {
+    private WeatherResponse createWeatherResponse(String locationName) {
         return WeatherResponse.builder()
-            .city(cityName)
+            .city(locationName)
             .latitude(37.5665)
             .longitude(126.9780)
             .temperature(3.4)

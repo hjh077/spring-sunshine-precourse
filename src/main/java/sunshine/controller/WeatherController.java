@@ -24,12 +24,12 @@ public class WeatherController {
     /**
      * 도시명으로 날씨를 조회한다
      *
-     * @param city 도시명
+     * @param location 도시명
      * @return 날씨 정보
      */
     @GetMapping
-    public ResponseEntity<WeatherResponse> getWeather(@RequestParam String city) {
-        WeatherResponse response = weatherService.getWeather(city);
+    public ResponseEntity<WeatherResponse> getWeather(@RequestParam String location, @RequestParam Boolean onAiResponse) {
+        WeatherResponse response = weatherService.getWeather(location, onAiResponse);
         return ResponseEntity.ok(response);
     }
 }

@@ -5,7 +5,7 @@ package sunshine.dto;
  */
 public class WeatherResponse {
 
-    private String city;
+    private String location;
     private double latitude;
     private double longitude;
     private double temperature;
@@ -18,7 +18,7 @@ public class WeatherResponse {
     }
 
     private WeatherResponse(Builder builder) {
-        this.city = builder.city;
+        this.location = builder.location;
         this.latitude = builder.latitude;
         this.longitude = builder.longitude;
         this.temperature = builder.temperature;
@@ -33,7 +33,7 @@ public class WeatherResponse {
     }
 
     public String getCity() {
-        return city;
+        return location;
     }
 
     public double getLatitude() {
@@ -69,7 +69,7 @@ public class WeatherResponse {
      */
     public static class Builder {
 
-        private String city;
+        private String location;
         private double latitude;
         private double longitude;
         private double temperature;
@@ -78,8 +78,8 @@ public class WeatherResponse {
         private String skyCondition;
         private String summary;
 
-        public Builder city(String city) {
-            this.city = city;
+        public Builder city(String location) {
+            this.location = location;
             return this;
         }
 

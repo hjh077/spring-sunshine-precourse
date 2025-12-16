@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
         Map<String, String> error = new HashMap<>();
         error.put("error", "CITY_NOT_FOUND");
         error.put("message", e.getMessage());
-        error.put("city", e.getCityName());
+        error.put("city", e.getLocationName());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 

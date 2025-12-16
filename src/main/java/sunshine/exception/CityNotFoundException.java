@@ -5,14 +5,14 @@ package sunshine.exception;
  */
 public class CityNotFoundException extends RuntimeException {
 
-    private final String cityName;
+    private final String locationName;
 
-    public CityNotFoundException(String cityName) {
-        super("도시를 찾을 수 없습니다: " + cityName);
-        this.cityName = cityName;
+    public CityNotFoundException(String locationName) {
+        super("도시를 찾을 수 없습니다: " + locationName);
+        this.locationName = locationName;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getLocationName() {
+        return locationName;
     }
 }

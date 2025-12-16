@@ -1,4 +1,4 @@
-package sunshine.service;
+package sunshine.external.client;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;

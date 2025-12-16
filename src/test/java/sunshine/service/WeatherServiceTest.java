@@ -6,10 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.ai.chat.client.ChatClient;
 import sunshine.dto.GeocodingApiResponse;
 import sunshine.dto.WeatherApiResponse;
 import sunshine.dto.WeatherResponse;
 import sunshine.exception.CityNotFoundException;
+import sunshine.external.client.GeocodingApiClient;
+import sunshine.external.client.WeatherApiClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,6 +20,9 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class WeatherServiceTest {
+
+    @Mock
+    ChatClient.Builder builder;
 
     @Mock
     private GeocodingApiClient geocodingApiClient;
@@ -28,22 +34,22 @@ class WeatherServiceTest {
 
     @BeforeEach
     void setUp() {
-        weatherService = new WeatherService(geocodingApiClient, weatherApiClient);
+        weatherService = new WeatherService(builder, geocodingApiClient, weatherApiClient);
     }
 
     @Test
     @DisplayName("도시명으로 날씨 정보를 조회한다")
     void getWeather_success() {
         // given
-        String cityName = "Seoul";
+        String locationName = "Seoul";
         GeocodingApiResponse coordinates = createCoordinates("37.5665", "126.9780");
         WeatherApiResponse weather = createWeatherResponse(3.4, 1.2, 65, 3);
 
-        when(geocodingApiClient.getCoordinates(cityName)).thenReturn(coordinates);
+        when(geocodingApiClient.getCoordinates(locationName)).thenReturn(coordinates);
         when(weatherApiClient.getWeather(37.5665, 126.9780)).thenReturn(weather);
 
         // when
-        WeatherResponse response = weatherService.getWeather(cityName);
+        WeatherResponse response = weatherService.getWeather(locationName, false);
 
         // then
         assertThat(response.getCity()).isEqualTo("Seoul");
@@ -58,11 +64,11 @@ class WeatherServiceTest {
     @DisplayName("존재하지 않는 도시를 조회하면 예외가 발생한다")
     void getWeather_cityNotFound() {
         // given
-        String cityName = "UnknownCity";
-        when(geocodingApiClient.getCoordinates(cityName)).thenReturn(null);
+        String locationName = "UnknownCity";
+        when(geocodingApiClient.getCoordinates(locationName)).thenReturn(null);
 
         // when & then
-        assertThatThrownBy(() -> weatherService.getWeather(cityName))
+        assertThatThrownBy(() -> weatherService.getWeather(locationName, false))
             .isInstanceOf(CityNotFoundException.class)
             .hasMessageContaining("UnknownCity");
     }
